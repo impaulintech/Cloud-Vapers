@@ -1,0 +1,101 @@
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 30px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.image-mini {
+  background-size: cover;
+  background-position: 0%;
+  height: 60px;
+  width: 60px;
+}
+
+.sub-image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.right-banner > .title {
+  font-size: 60px;
+  font-weight: 600;
+  width: 820px;
+}
+
+.right-banner > .description > p {
+  font-size: 18px;
+}
+
+.right-banner > .description {
+  font-size: 24px;
+  word-spacing: 5px;
+  letter-spacing: 1px;
+  width: 750px;
+}
+.right-banner > .price {
+  font-size: 18px;
+}
+
+.right-banner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card:hover {
+  border: none;
+}
+
+.subh1 {
+  font-weight: 300;
+  padding: 20px 150px 50px 150px;
+}
+
+.similar {
+  display: flex;
+  padding: 0 150px;
+  justify-content: space-around;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.star {
+  width: 250px;
+  height: 30px;
+  background-image: url("../images/star.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.specific-btn-sm {
+  margin: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .right-banner > .title {
+    font-size: 36px;
+    font-weight: 600;
+    width: 100%;
+  }
+  .right-banner > .description {
+    width: 100%;
+  }
+
+  .right-banner {
+    width: 100%;
+  }
+  .similar {
+    width: 100%;
+    padding: 10px;
+  }
+  .subh1 {
+    font-weight: 300;
+    padding: 21px;
+  }
+}
