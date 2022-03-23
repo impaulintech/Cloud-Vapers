@@ -78,6 +78,7 @@
 .bot-content {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   gap: 1rem;
 }
 
@@ -93,7 +94,7 @@
 
 .cart-order-list {
   overflow-y: scroll;
-  height: 60vh;
+  height: 600px;
 }
 
 .cart-order-list::-webkit-scrollbar {
@@ -164,11 +165,15 @@
   cursor: pointer;
 }
 
+.order-container {
+  overflow: hidden;
+}
+
 .order-container > .header {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -190,6 +195,10 @@
   .left-plate {
     background-position: center;
     background-size: 60%;
+  }
+  .cart-order-list {
+    overflow-y: scroll;
+    height: 420px;
   }
 }
 @media only screen and (max-width: 400px) {
