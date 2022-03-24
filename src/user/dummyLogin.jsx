@@ -19,7 +19,7 @@ function DummyLogin() {
               })
         }
       >
-        LOGIN
+        FAKE LOGIN
       </button>
     </div>
   );
