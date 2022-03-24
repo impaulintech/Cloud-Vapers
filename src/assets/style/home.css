@@ -29,6 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 50%;
 }
 .left-content > h1 {
   font-size: 54px;

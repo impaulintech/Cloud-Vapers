@@ -5,11 +5,20 @@ import ButtonLg from "./ButtonLg";
 
 const HeroBanner = () => {
   const [user, setUser, productList, setProduct] = useContext(UserContext);
-  // const { name, price, description, image, id } =
-  //   productList.product === undefined ? null : productList.product[1];
   let x = [];
-  productList.product === undefined ? null : (x = productList.product[6]);
+  productList.product === undefined
+    ? null
+    : (x = productList.product[Math.floor(Math.random() * 8)]);
   const { name, price, image, _id: id } = x;
+
+  const xtyle = {
+    border: "3px solid var(--color-tertiary)",
+    textAlign: "center",
+    color: "var(--color-tertiary)",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  };
+
   return (
     <div className="product-model">
       <div className="left-content">
@@ -28,7 +37,11 @@ const HeroBanner = () => {
         <div
           className="model-image"
           style={{ backgroundImage: `url('${image}')` }}
-        ></div>
+        >
+          <div className="discount" style={xtyle}>
+            Spotlight
+          </div>
+        </div>
       </div>
     </div>
   );

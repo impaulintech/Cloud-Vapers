@@ -256,14 +256,19 @@ input[type="submit"] {
 
   .right-content {
     width: 90%;
+    margin-top: 50px;
   }
   .model-image {
     background-size: 71% !important;
     margin: 0px auto;
   }
+  .left-content {
+    width: 100% !important;
+  }
   .left-content > h1 {
     font-size: 34px !important;
     font-weight: 500;
+    width: 100% !important;
   }
   .left-content > h2 {
     font-weight: 200;
