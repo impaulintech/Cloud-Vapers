@@ -1,36 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from "./components/nav";
-import PopUp from "./components/popup";
-import Home from "./user/home";
-import Products from "./user/products";
-import Login from "./user/login";
-import Register from "./user/register";
-import SpecificProduct from "./user/specificProduct";
-import Cart from "./user/cart";
+import NavBar from "./components/Nav";
+import PopUp from "./components/Popup";
+import Home from "./user/Home";
+import Products from "./user/Products";
+import Login from "./user/Login";
+import Register from "./user/Register";
+import SpecificProduct from "./user/SpecificProduct";
+import Cart from "./user/Cart";
 import AdminPanel from "./admin/adminDashboard";
 import AddProduct from "./admin/addProduct";
 import EditProduct from "./admin/editProduct";
 import { UserProvider } from "./UserContext";
 import "./assets/style/App.css";
 import "./assets/style/popup.css";
+import DummyLogin from "./user/dummyLogin";
 
 const App = () => {
-  const [productList, setProduct] = useState([]);
-
-  // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_API_URL}/products/active`)
-  //     .then((res) => res.json())
-  //     .then((product) => {
-  //       setProduct({ product });
-  //     });
-  // }, []);
-
   return (
     <UserProvider>
       <React.Fragment>
         <PopUp />
         <Cart />
+        <DummyLogin />
         <Router>
           <NavBar />
           <Routes>

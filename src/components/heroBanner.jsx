@@ -1,37 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+/* eslint-disable no-unused-expressions */
+import React, { useContext } from "react";
+import { UserContext } from "../UserContext";
+import ButtonLg from "./ButtonLg";
 
 const HeroBanner = () => {
+  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  // const { name, price, description, image, id } =
+  //   productList.product === undefined ? null : productList.product[1];
+  let x = [];
+  productList.product === undefined ? null : (x = productList.product[6]);
+  const { name, price, image, _id: id } = x;
   return (
     <div className="product-model">
       <div className="left-content">
-        <h1>Geekvape Aegis Max 100W</h1>
+        <h1>{name}</h1>
         <h2>Kit w/ Zeus Tank</h2>
         <div className="price">
-          <span className="current">PHP 500.oo</span>
+          <span className="current">PHP {price}.oo</span>
           <span className="previous">
-            <del>PHP 1,000.oo</del>
+            <del>PHP {price * 2}.oo</del>
           </span>
         </div>
-        <div className="button-lg">
-          <Link
-            to={`/products/6228b7ec62657f8493a586da`}
-            style={{ backgroundColor: "transparent" }}
-          >
-            <button className="more-details">More details</button>
-          </Link>
-
-          <button
-            onClick={() => console.log("add to cart")}
-            className="add-to-cart"
-          >
-            Add to cart
-          </button>
-        </div>
+        <ButtonLg id={id} />
       </div>
 
       <div className="right-content">
-        <div className="model-image"></div>
+        <div
+          className="model-image"
+          style={{ backgroundImage: `url('${image}')` }}
+        ></div>
       </div>
     </div>
   );

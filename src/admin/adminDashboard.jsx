@@ -1,6 +1,6 @@
 import React from "react";
 import "../assets/style/admin.css";
-import OrderPlates from "../components/orderPlates";
+import OrderPlates from "../components/OrderPlates";
 
 const AdminPanel = () => {
   return (

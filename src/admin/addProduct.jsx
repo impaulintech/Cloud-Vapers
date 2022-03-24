@@ -1,6 +1,6 @@
 import React from "react";
-import Form from "../components/form";
-import ProductBanner from "../components/productBanner";
+import Form from "../components/Form";
+import ProductBanner from "../components/ProductBanner";
 
 const AddProduct = () => {
   return (

@@ -4,7 +4,7 @@
   align-items: center;
   gap: 3rem;
   padding: 30px;
-  margin-top: 50px;
+  margin-top: 60px;
   flex-wrap: wrap;
 }
 
@@ -97,5 +97,8 @@
   .subh1 {
     font-weight: 300;
     padding: 21px;
+  }
+  .banner {
+    margin-top: 120px;
   }
 }

@@ -68,11 +68,16 @@ footer {
   /* background-color: maroon; */
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.9rem;
+  margin-bottom: 60px;
 }
 .card > .title {
   font-size: 21px;
   font-weight: bold;
+}
+.price {
+  color: var(--font-color-primary);
+  font-weight: 300;
 }
 .price > .previous {
   margin-left: 30px;
@@ -253,8 +258,15 @@ input[type="submit"] {
     width: 90%;
   }
   .model-image {
-    background-size: 81% !important;
+    background-size: 71% !important;
     margin: 0px auto;
+  }
+  .left-content > h1 {
+    font-size: 34px !important;
+    font-weight: 500;
+  }
+  .left-content > h2 {
+    font-weight: 200;
   }
 
   .all-products {

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../assets/style/popup.css";
+import { UserContext } from "../UserContext";
+import { CheckUser } from "../utils/CheckUser";
 
 const PopUp = () => {
-  const success = "https://i.imgur.com/fyOI306.png";
-  const error = "https://i.imgur.com/192XSkg.png";
-  const message = "Please login first.";
+  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const alert =
+    CheckUser() === false
+      ? "https://i.imgur.com/192XSkg.png"
+      : "https://i.imgur.com/fyOI306.png";
+  const message = CheckUser() === false ? "Login first." : "Success!";
 
   return (
     <React.Fragment>
@@ -30,7 +35,7 @@ const PopUp = () => {
             />
           </div>
           <div className="popup-flex">
-            <img src={error} width="100" alt="icon" />
+            <img src={alert} width="100" alt="icon" />
             <h1>{message}</h1>
           </div>
         </div>

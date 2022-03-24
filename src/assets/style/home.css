@@ -18,8 +18,7 @@ body {
   flex-wrap: wrap-reverse;
 }
 .model-image {
-  background-image: url("../images/product\ image.png");
-  background-size: cover;
+  background-size: 90%;
   background-position: 0%;
   background-repeat: no-repeat;
   height: 420px;

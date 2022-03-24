@@ -1,6 +1,16 @@
 import React from "react";
+import { CheckUser } from "../utils/CheckUser";
 
-const ProductBanner = () => {
+const ProductBanner = ({ name, price, description, image }) => {
+  const target = document.querySelector(".popup-container");
+  let y = CheckUser();
+  let x = (condition) => {
+    if (condition === false) {
+      target.style.display = "block";
+    } else {
+      alert("Product was added to your cart.");
+    }
+  };
   return (
     <div className="banner">
       <div className="left-banner">
@@ -8,7 +18,7 @@ const ProductBanner = () => {
           <div
             className="image"
             style={{
-              backgroundImage: `url('https://i.imgur.com/y2LvNg4.png')`,
+              backgroundImage: `url('${image}')`,
             }}
           >
             <div className="discount">50% OFF</div>
@@ -19,7 +29,7 @@ const ProductBanner = () => {
                 key={Math.random()}
                 className="image-mini"
                 style={{
-                  backgroundImage: `url('https://i.imgur.com/y2LvNg4.png')`,
+                  backgroundImage: `url('${image}')`,
                 }}
               ></div>
             ))}
@@ -27,19 +37,22 @@ const ProductBanner = () => {
         </div>
       </div>
       <div className="right-banner">
-        <div className="title">Name</div>
+        <div className="title">{name}</div>
         <div className="description">
-          <p>Description</p>
+          <p>{description}</p>
         </div>
         <div className="star"></div>
         <div className="price">
-          <span className="current">PHP price.oo</span>
+          <span className="current">PHP {price}.oo</span>
           <span className="previous">
-            <del>PHP price.oo</del>
+            <del>PHP {price * 2}.oo</del>
           </span>
         </div>
         <div className="button-sm">
-          <button className="add-to-cart-sm specific-btn-sm">
+          <button
+            className="add-to-cart-sm specific-btn-sm"
+            onClick={() => x(y)}
+          >
             Add to cart
           </button>
         </div>

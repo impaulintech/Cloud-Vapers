@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../UserContext";
+import { CheckUser } from "../utils/CheckUser";
 
 const NavBar = () => {
   const toggle = () => {
@@ -16,6 +18,8 @@ const NavBar = () => {
     toggle.classList.add("toggle");
   };
 
+  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  let classX = CheckUser() === false ? "popup" : "cart";
   return (
     <React.Fragment>
       {window.location.pathname === "/login" ||
@@ -45,7 +49,7 @@ const NavBar = () => {
                 width="21"
                 alt="cart"
                 onClick={() => {
-                  document.querySelector(".cart-container").style.display =
+                  document.querySelector(".popup-container").style.display =
                     "block";
                   closeToggle();
                 }}
@@ -92,8 +96,9 @@ const NavBar = () => {
                 src="https://i.imgur.com/sKkdgD2.png"
                 width="27"
                 onClick={() =>
-                  (document.querySelector(".cart-container").style.display =
-                    "block")
+                  (document.querySelector(
+                    `.${classX}-container`
+                  ).style.display = "block")
                 }
               />
             </span>

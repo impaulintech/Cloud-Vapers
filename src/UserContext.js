@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 export const UserContext = createContext();
 
@@ -7,9 +7,20 @@ export const UserProvider = (props) => {
     id: null,
     isAdmin: null,
   });
-  const x = "Hello";
+
+  const [productList, setProduct] = useState([]);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}/products/active`)
+      .then((res) => res.json())
+      .then((product) => {
+        setProduct({ product });
+      });
+  }, []);
 
   return (
-    <UserContext.Provider value={x}>{props.children}</UserContext.Provider>
+    <UserContext.Provider value={[user, setUser, productList, setProduct]}>
+      {props.children}
+    </UserContext.Provider>
   );
 };

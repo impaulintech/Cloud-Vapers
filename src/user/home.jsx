@@ -1,13 +1,10 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import "../assets/style/home.css";
-import Footer from "../components/footer";
-import HeroBanner from "../components/heroBanner";
-import FeaturedProduct from "./../components/featuredProduct";
-import { UserContext } from "../UserContext";
+import Footer from "../components/Footer";
+import HeroBanner from "../components/HeroBanner";
+import FeaturedProduct from "../components/FeaturedProduct";
 
 const Home = () => {
-  const value = useContext(UserContext);
-  console.log(value);
   return (
     <Fragment>
       <HeroBanner />

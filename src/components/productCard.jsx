@@ -1,37 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ButtonSm from "./ButtonSm";
 
-const ProductCard = () => {
+const ProductCard = ({ name, price, description, image, id }) => {
   return (
     <div className="card">
       <div
         className="image"
-        style={{ backgroundImage: `url('https://i.imgur.com/y2LvNg4.png')` }}
-        onClick={() => console.log(`/products/id`)}
+        style={{ backgroundImage: `url('${image}')` }}
+        onClick={() => console.log(`/products/${id}`)}
       >
         <div className="discount">50% OFF</div>
       </div>
-      <div className="title">Name from productCard</div>
-      <div className="description">description from productCard</div>
+      <div className="title">{name}</div>
+      <div className="description">{description.slice(0, 100) + "..."}</div>
       <div className="price">
-        <span className="current">PHP price.oo</span>
+        <span className="current">PHP {price}.oo</span>
         <span className="previous">
-          <del>PHP price.oo</del>
+          <del>PHP {price * 2}.oo</del>
         </span>
       </div>
-      <div className="button-sm">
-        <a
-          href={`/products/id`}
-          style={{
-            textDecoration: "none",
-            color: "white",
-            backgroundColor: "transparent",
-          }}
-        >
-          <button className="more-details-sm">More details</button>
-        </a>
-        <button className="add-to-cart-sm">Add to cart</button>
-      </div>
+      <ButtonSm id={id} />
     </div>
   );
 };
