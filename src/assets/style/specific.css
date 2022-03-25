@@ -25,10 +25,14 @@
   font-size: 60px;
   font-weight: 600;
   width: 820px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .right-banner > .description > p {
   font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .right-banner > .description {
@@ -36,6 +40,8 @@
   word-spacing: 5px;
   letter-spacing: 1px;
   width: 750px;
+  overflow: hidden;
+  word-break: keep-all;
 }
 .right-banner > .price {
   font-size: 18px;

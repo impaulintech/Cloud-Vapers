@@ -18,7 +18,8 @@ const NavBar = () => {
     toggle.classList.add("toggle");
   };
 
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [userStatus, dispatch, productList, setProduct] =
+    useContext(UserContext);
   let classX = CheckUser() === false ? "popup" : "cart";
   return (
     <React.Fragment>
@@ -37,10 +38,10 @@ const NavBar = () => {
               className="x"
               style={{
                 justifyContent:
-                  user.isAdmin === null ? "space-evenly" : "flex-end",
+                  userStatus.isAdmin === null ? "space-evenly" : "flex-end",
               }}
             >
-              {user.isAdmin === null ? (
+              {userStatus.isAdmin === null ? (
                 <>
                   <img
                     src="https://i.imgur.com/oCcM5tC.png"
@@ -77,7 +78,7 @@ const NavBar = () => {
           </div>
           <div className="menu toggle" onClick={() => toggle()}>
             <ul>
-              {user.isAdmin === null ? (
+              {userStatus.isAdmin === null ? (
                 <li>
                   <Link to="/">Home</Link>
                 </li>
@@ -86,18 +87,28 @@ const NavBar = () => {
                 <Link to="/products">Products</Link>
               </li>
               <li>
-                {user.isAdmin === null ? (
-                  user.id === null ? (
+                {userStatus.isAdmin === null ? (
+                  userStatus.id === null ? (
                     <a href="/login">Login</a>
                   ) : (
-                    <a href="/">Logout</a>
+                    <a
+                      href="/login"
+                      onClick={() => dispatch({ type: "resetData" })}
+                    >
+                      Logout
+                    </a>
                   )
                 ) : (
-                  <a href="/">Logout</a>
+                  <a
+                    href="/login"
+                    onClick={() => dispatch({ type: "resetData" })}
+                  >
+                    Logout
+                  </a>
                 )}
               </li>
-              {user.isAdmin === null ? (
-                user.id === null ? (
+              {userStatus.isAdmin === null ? (
+                userStatus.id === null ? (
                   <li>
                     <a href="/register">Register</a>
                   </li>
@@ -105,7 +116,7 @@ const NavBar = () => {
               ) : null}
             </ul>
           </div>
-          {user.isAdmin === null ? (
+          {userStatus.isAdmin === null ? (
             <div className="cart">
               <span>
                 <img

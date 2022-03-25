@@ -35,15 +35,7 @@ const SpecificProduct = () => {
 
   return (
     <React.Fragment>
-      {
-        productList.length === 0 ? null : matchProduct()
-        // <ProductBanner
-        //   name={productList.product.name}
-        //   price={productList.product.price}
-        //   description={productList.product.description}
-        //   image={productList.product.image}
-        // />
-      }
+      {productList.length === 0 ? null : matchProduct()}
       <div className="spcp">
         <h1 className="subh1">Similar Product</h1>
         <div className="similar">

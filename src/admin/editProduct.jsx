@@ -33,10 +33,16 @@ const EditProduct = () => {
   };
 
   return (
-    <React.Fragment>
-      {matchProduct()}
-      <Footer />
-    </React.Fragment>
+    <>
+      {userStatus.isAdmin === true ? (
+        <React.Fragment>
+          {matchProduct()}
+          <Footer />
+        </React.Fragment>
+      ) : (
+        (window.location = "/")
+      )}
+    </>
   );
 };
 

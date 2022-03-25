@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../utils/UserContext";
 
 const Login = () => {
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [userStatus, dispatch] = useContext(UserContext);
   return (
     <>
-      {user.isAdmin === null ? (
+      {userStatus.isAdmin === null && userStatus.id === null ? (
         <React.Fragment>
           <nav className="nav-login">
             <h1>
@@ -56,7 +56,9 @@ const Login = () => {
             </div>
           </div>
         </React.Fragment>
-      ) : null}
+      ) : (
+        null((window.location = "/"))
+      )}
     </>
   );
 };
