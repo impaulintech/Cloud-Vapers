@@ -3,17 +3,19 @@ import React, { useContext } from "react";
 import Footer from "../components/Footer";
 import ProductBanner from "../components/ProductBanner";
 import ProductCard from "../components/ProductCard";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../utils/UserContext";
 import "../assets/style/specific.css";
 import { useParams } from "react-router-dom";
 
 const SpecificProduct = () => {
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [userStatus, dispatch, productList, setProduct] =
+    useContext(UserContext);
   const { productId } = useParams();
 
   const matchProduct = () => {
-    if (productList.length === 0) null;
-    else {
+    if (productList.length === 0) {
+      null;
+    } else {
       for (let i = 0; i < productList.product.length; i++) {
         if (productList.product[i]._id === productId) {
           return (

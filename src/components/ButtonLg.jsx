@@ -9,7 +9,7 @@ function ButtonLg({ id }) {
     if (condition === false) {
       target.style.display = "block";
     } else {
-      alert("Product was added to your cart.");
+      target.style.display = "block";
     }
   };
   return (

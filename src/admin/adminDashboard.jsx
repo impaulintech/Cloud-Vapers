@@ -1,6 +1,6 @@
 import React from "react";
-import "../assets/style/admin.css";
 import OrderPlates from "../components/OrderPlates";
+import "../assets/style/admin.css";
 
 const AdminPanel = () => {
   return (
@@ -37,8 +37,8 @@ const AdminPanel = () => {
         </div>
         <h1>Users Orders</h1>
         <div className="admin-bot-container">
-          {["a", "b", "c", "d"].map((x) => (
-            <OrderPlates id={x} />
+          {["a", "b", "c", "d", "e", "f", "g"].map((x) => (
+            <OrderPlates id={x} key={Math.random()} />
           ))}
         </div>
       </div>

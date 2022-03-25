@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
 import banner from "../assets/images/banner.png";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../utils/UserContext";
 import "../assets/style/products.css";
 
 const Products = () => {

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import React, { useContext } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../utils/UserContext";
 import ButtonLg from "./ButtonLg";
 
 const HeroBanner = () => {
@@ -13,6 +13,7 @@ const HeroBanner = () => {
 
   const xtyle = {
     border: "3px solid var(--color-tertiary)",
+    width: "150px",
     textAlign: "center",
     color: "var(--color-tertiary)",
     fontWeight: "bold",
@@ -33,7 +34,10 @@ const HeroBanner = () => {
         <ButtonLg id={id} />
       </div>
 
-      <div className="right-content">
+      <div
+        className="right-content"
+        onClick={() => (window.location = `/products/${id}`)}
+      >
         <div
           className="model-image"
           style={{ backgroundImage: `url('${image}')` }}

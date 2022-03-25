@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../utils/UserContext";
 import { CheckUser } from "../utils/CheckUser";
 
 const NavBar = () => {
@@ -33,27 +33,38 @@ const NavBar = () => {
                 cloud vapers
               </Link>
             </h1>
-            <div className="x">
-              <img
-                src="https://i.imgur.com/oCcM5tC.png"
-                width="21"
-                alt="orders"
-                onClick={() => {
-                  document.querySelector(".popup-container").style.display =
-                    "block";
-                  closeToggle();
-                }}
-              />
-              <img
-                src="https://i.imgur.com/sKkdgD2.png"
-                width="21"
-                alt="cart"
-                onClick={() => {
-                  document.querySelector(".popup-container").style.display =
-                    "block";
-                  closeToggle();
-                }}
-              />
+            <div
+              className="x"
+              style={{
+                justifyContent:
+                  user.isAdmin === null ? "space-evenly" : "flex-end",
+              }}
+            >
+              {user.isAdmin === null ? (
+                <>
+                  <img
+                    src="https://i.imgur.com/oCcM5tC.png"
+                    width="21"
+                    alt="orders"
+                    onClick={() => {
+                      document.querySelector(".popup-container").style.display =
+                        "block";
+                      closeToggle();
+                    }}
+                  />
+                  <img
+                    src="https://i.imgur.com/sKkdgD2.png"
+                    width="21"
+                    alt="cart"
+                    onClick={() => {
+                      document.querySelector(
+                        `.${classX}-container`
+                      ).style.display = "block";
+                      closeToggle();
+                    }}
+                  />
+                </>
+              ) : null}
               <img
                 src="https://i.imgur.com/yMoNMdN.png"
                 width="30"
@@ -66,43 +77,59 @@ const NavBar = () => {
           </div>
           <div className="menu toggle" onClick={() => toggle()}>
             <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
+              {user.isAdmin === null ? (
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+              ) : null}
               <li>
                 <Link to="/products">Products</Link>
               </li>
               <li>
-                <a href="/login">Login</a>
+                {user.isAdmin === null ? (
+                  user.id === null ? (
+                    <a href="/login">Login</a>
+                  ) : (
+                    <a href="/">Logout</a>
+                  )
+                ) : (
+                  <a href="/">Logout</a>
+                )}
               </li>
-              <li>
-                <a href="/register">Register</a>
-              </li>
+              {user.isAdmin === null ? (
+                user.id === null ? (
+                  <li>
+                    <a href="/register">Register</a>
+                  </li>
+                ) : null
+              ) : null}
             </ul>
           </div>
-          <div className="cart">
-            <span>
-              <img
-                src="https://i.imgur.com/oCcM5tC.png"
-                width="25"
-                onClick={() =>
-                  (document.querySelector(".popup-container").style.display =
-                    "block")
-                }
-              />
-            </span>
-            <span>
-              <img
-                src="https://i.imgur.com/sKkdgD2.png"
-                width="27"
-                onClick={() =>
-                  (document.querySelector(
-                    `.${classX}-container`
-                  ).style.display = "block")
-                }
-              />
-            </span>
-          </div>
+          {user.isAdmin === null ? (
+            <div className="cart">
+              <span>
+                <img
+                  src="https://i.imgur.com/oCcM5tC.png"
+                  width="25"
+                  onClick={() =>
+                    (document.querySelector(".popup-container").style.display =
+                      "block")
+                  }
+                />
+              </span>
+              <span>
+                <img
+                  src="https://i.imgur.com/sKkdgD2.png"
+                  width="27"
+                  onClick={() =>
+                    (document.querySelector(
+                      `.${classX}-container`
+                    ).style.display = "block")
+                  }
+                />
+              </span>
+            </div>
+          ) : null}
         </nav>
       )}
     </React.Fragment>

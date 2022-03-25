@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
 import "../assets/style/popup.css";
-import { UserContext } from "../UserContext";
-import { CheckUser } from "../utils/CheckUser";
+import { UserContext } from "../utils/UserContext";
+import { CheckUser, CheckAdmin } from "../utils/CheckUser";
 
 const PopUp = () => {
   const [user, setUser, productList, setProduct] = useContext(UserContext);
+  let condition = user.isAdmin === null ? CheckUser() : CheckAdmin();
   const alert =
-    CheckUser() === false
+    condition === false
       ? "https://i.imgur.com/192XSkg.png"
       : "https://i.imgur.com/fyOI306.png";
-  const message = CheckUser() === false ? "Login first." : "Success!";
+  const message = condition === false ? "Login first." : "Success!";
 
   return (
     <React.Fragment>

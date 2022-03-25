@@ -1,25 +1,53 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useContext } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../utils/UserContext";
 
 function DummyLogin() {
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [userStatus, dispatch] = useContext(UserContext);
   return (
-    <div>
+    <div
+      style={{
+        position: "fixed",
+        zIndex: "99999",
+        bottom: "100px",
+        right: "150px",
+      }}
+    >
       <button
+        style={{
+          position: "fixed",
+          zIndex: "99999",
+          backgroundColor: userStatus.id === null ? "green" : "red",
+          padding: "20px",
+          borderRadius: "100px",
+          fontWeight: "bold",
+          border: "none",
+        }}
         onClick={() =>
-          user.id === null
-            ? setUser({
-                id: true,
-                isAdmin: null,
-              })
-            : setUser({
-                id: null,
-                isAdmin: null,
-              })
+          userStatus.id === null
+            ? dispatch({ type: "userLogin" })
+            : dispatch({ type: "resetData" })
         }
       >
-        FAKE LOGIN
+        {userStatus.id === null ? "USER LOGIN" : "USER LOGOUT"}
+      </button>
+      <button
+        style={{
+          position: "fixed",
+          backgroundColor: userStatus.isAdmin === null ? "green" : "red",
+          padding: "20px",
+          borderRadius: "100px",
+          fontWeight: "bold",
+          border: "none",
+          bottom: "120px",
+        }}
+        onClick={() =>
+          userStatus.isAdmin === null
+            ? dispatch({ type: "adminLogin" })
+            : dispatch({ type: "resetData" })
+        }
+      >
+        {userStatus.isAdmin === null ? "ADMIN LOGIN" : "ADMIN LOGOUT"}
       </button>
     </div>
   );

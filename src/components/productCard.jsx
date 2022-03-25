@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import ButtonSm from "./ButtonSm";
+import { UserContext } from "../utils/UserContext";
 
 const ProductCard = ({ name, price, description, image, id }) => {
+  const [userStatus, dispatch] = useContext(UserContext);
   return (
     <div className="card">
       <div
         className="image"
         style={{ backgroundImage: `url('${image}')` }}
-        onClick={() => console.log(`/products/${id}`)}
+        onClick={() =>
+          (window.location =
+            userStatus.isAdmin === null
+              ? `/products/${id}`
+              : `/admin/edit-product/${id}`)
+        }
       >
         <div className="discount">50% OFF</div>
       </div>

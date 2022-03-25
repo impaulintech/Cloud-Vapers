@@ -50,7 +50,11 @@
 }
 
 .admin-bot-plates {
-  background-color: var(--color-tertiary);
+  background: linear-gradient(
+    180deg,
+    rgba(190, 49, 68, 1) 30%,
+    rgba(190, 49, 68, 0.6082808123249299) 60%
+  );
   padding: 20px;
   display: flex;
   flex-direction: column;

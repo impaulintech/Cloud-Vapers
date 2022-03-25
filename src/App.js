@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/Nav";
 import PopUp from "./components/Popup";
@@ -11,7 +11,7 @@ import Cart from "./user/Cart";
 import AdminPanel from "./admin/adminDashboard";
 import AddProduct from "./admin/addProduct";
 import EditProduct from "./admin/editProduct";
-import { UserProvider } from "./UserContext";
+import { UserProvider } from "./utils/UserContext";
 import "./assets/style/App.css";
 import "./assets/style/popup.css";
 import DummyLogin from "./user/dummyLogin";
@@ -34,7 +34,10 @@ const App = () => {
             {/* Admin Routes */}
             <Route path="/admin/dashboard" element={<AdminPanel />} />
             <Route path="/admin/add-product" element={<AddProduct />} />
-            <Route path="/admin/edit-product" element={<EditProduct />} />
+            <Route
+              path="/admin/edit-product/:productId"
+              element={<EditProduct />}
+            />
           </Routes>
         </Router>
       </React.Fragment>

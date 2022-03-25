@@ -1,30 +1,34 @@
-import React from "react";
-import { CheckUser } from "./../utils/CheckUser";
+import React, { useContext } from "react";
+import { UserContext } from "../utils/UserContext";
 
 function ButtonSm({ id }) {
   const target = document.querySelector(".popup-container");
-  let y = CheckUser();
-  let x = (condition) => {
-    if (condition === false) {
-      target.style.display = "block";
-    } else {
-      alert("Product was added to your cart.");
-    }
+  const [userStatus, dispatch] = useContext(UserContext);
+
+  let x = () => {
+    target.style.display = "block";
   };
+
   return (
     <div className="button-sm">
       <a
-        href={`/products/${id}`}
+        href={
+          userStatus.isAdmin === null
+            ? `/products/${id}`
+            : `/admin/edit-product/${id}`
+        }
         style={{
           textDecoration: "none",
           color: "white",
           backgroundColor: "transparent",
         }}
       >
-        <button className="more-details-sm">More details</button>
+        <button className="more-details-sm">
+          {userStatus.isAdmin === true ? "Edit" : "More details"}
+        </button>
       </a>
-      <button className="add-to-cart-sm" onClick={() => x(y)}>
-        Add to cart
+      <button className="add-to-cart-sm" onClick={() => x()}>
+        {userStatus.isAdmin === true ? "Disable" : "Add to cart"}
       </button>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ProductCard from "./ProductCard";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../utils/UserContext";
 
 const FeaturedProduct = () => {
   const [user, setUser, productList, setProduct] = useContext(UserContext);
