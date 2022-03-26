@@ -5,11 +5,6 @@ import React, { useState, createContext, useEffect, useReducer } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-  // const [user, setUser] = useState({
-  //   id: null,
-  //   isAdmin: null,
-  // });
-
   const userStatus = JSON.parse(localStorage.getItem("user"));
 
   const reducer = (state, action) => {

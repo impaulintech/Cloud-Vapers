@@ -33,6 +33,7 @@
   font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: keep-all;
 }
 
 .right-banner > .description {
@@ -45,6 +46,8 @@
 }
 .right-banner > .price {
   font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .right-banner {

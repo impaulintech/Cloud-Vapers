@@ -8,13 +8,13 @@ import Login from "./user/Login";
 import Register from "./user/Register";
 import SpecificProduct from "./user/SpecificProduct";
 import Cart from "./user/Cart";
-import AdminPanel from "./admin/adminDashboard";
-import AddProduct from "./admin/addProduct";
-import EditProduct from "./admin/editProduct";
+import AdminPanel from "./admin/AdminDashboard";
+import AddProduct from "./admin/AddProduct";
+import EditProduct from "./admin/EditProduct";
 import { UserProvider } from "./utils/UserContext";
+import DummyLogin from "./utils/dummyLogin";
 import "./assets/style/App.css";
 import "./assets/style/popup.css";
-import DummyLogin from "./user/dummyLogin";
 
 const App = () => {
   return (

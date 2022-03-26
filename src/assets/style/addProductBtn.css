@@ -1,0 +1,19 @@
+.add-product-button {
+  background-color: var(--color-tertiary);
+  border: none;
+  border-radius: 100%;
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.add-product-button:hover {
+  width: 81px;
+  height: 81px;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+}

@@ -2,9 +2,9 @@
 import React, { useContext } from "react";
 import Form from "../components/Form";
 import { useParams } from "react-router-dom";
-import ProductBanner from "../components/ProductBanner";
 import { UserContext } from "../utils/UserContext";
 import Footer from "../components/Footer";
+import AddProductButton from "../components/AddProduct";
 
 const EditProduct = () => {
   const [userStatus, dispatch, productList, setProduct] =
@@ -42,6 +42,7 @@ const EditProduct = () => {
       ) : (
         (window.location = "/")
       )}
+      <AddProductButton />
     </>
   );
 };

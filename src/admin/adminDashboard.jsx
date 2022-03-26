@@ -1,6 +1,7 @@
 import React from "react";
 import OrderPlates from "../components/OrderPlates";
 import "../assets/style/admin.css";
+import AddProductButton from "../components/AddProduct";
 
 const AdminPanel = () => {
   return (
@@ -42,6 +43,7 @@ const AdminPanel = () => {
           ))}
         </div>
       </div>
+      <AddProductButton />
     </React.Fragment>
   );
 };

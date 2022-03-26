@@ -137,6 +137,15 @@ nav {
   color: var(--font-color-primary);
 }
 
+.spotlight {
+  border: 3px solid var(--color-tertiary);
+  width: 150px;
+  text-align: center;
+  color: var(--color-tertiary);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .cart {
   display: flex;
   flex-wrap: wrap;

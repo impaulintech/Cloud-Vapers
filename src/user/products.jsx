@@ -4,9 +4,11 @@ import ProductCard from "../components/ProductCard";
 import banner from "../assets/images/banner.png";
 import { UserContext } from "../utils/UserContext";
 import "../assets/style/products.css";
+import AddProductButton from "../components/AddProduct";
 
 const Products = () => {
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [userStatus, dispatch, productList, setProduct] =
+    useContext(UserContext);
   return (
     <React.Fragment>
       <div className="all-products">
@@ -28,6 +30,7 @@ const Products = () => {
               />
             ))}
       </div>
+      {userStatus.isAdmin === null ? null : <AddProductButton />}
       <Footer />
     </React.Fragment>
   );

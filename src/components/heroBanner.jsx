@@ -2,33 +2,28 @@
 import React, { useContext } from "react";
 import { UserContext } from "../utils/UserContext";
 import ButtonLg from "./ButtonLg";
+import dummy from "../assets/images/dummy.png";
 
 const HeroBanner = () => {
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [userStatus, dispatch, productList, setProduct] =
+    useContext(UserContext);
   let x = [];
   productList.product === undefined
     ? null
     : (x = productList.product[Math.floor(Math.random() * 8)]);
   const { name, price, image, _id: id } = x;
 
-  const xtyle = {
-    border: "3px solid var(--color-tertiary)",
-    width: "150px",
-    textAlign: "center",
-    color: "var(--color-tertiary)",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-  };
-
   return (
     <div className="product-model">
       <div className="left-content">
-        <h1>{name}</h1>
+        <h1>{name === undefined ? "Lorem ipsum dolor sit amet..." : name}</h1>
         <h2>Kit w/ Zeus Tank</h2>
         <div className="price">
-          <span className="current">PHP {price}.oo</span>
+          <span className="current">
+            PHP {price === undefined ? "000" : price}.oo
+          </span>
           <span className="previous">
-            <del>PHP {price * 2}.oo</del>
+            <del>PHP {price === undefined ? "000" : price * 2}.oo</del>
           </span>
         </div>
         <ButtonLg id={id} />
@@ -40,11 +35,11 @@ const HeroBanner = () => {
       >
         <div
           className="model-image"
-          style={{ backgroundImage: `url('${image}')` }}
+          style={{
+            backgroundImage: `url('${image === undefined ? dummy : image}')`,
+          }}
         >
-          <div className="discount" style={xtyle}>
-            Spotlight
-          </div>
+          <div className="discount spotlight">Spotlight</div>
         </div>
       </div>
     </div>
