@@ -3,7 +3,7 @@ import ButtonSm from "./ButtonSm";
 import { UserContext } from "../utils/UserContext";
 
 const ProductCard = ({ name, price, description, image, id }) => {
-  const [userStatus, dispatch] = useContext(UserContext);
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
   return (
     <div className="card">
       <div

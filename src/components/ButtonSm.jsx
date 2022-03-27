@@ -1,14 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../utils/UserContext";
+import { AddToCart } from "./../utils/AddToCart";
 
 function ButtonSm({ id }) {
-  const target = document.querySelector(".popup-container");
-  const [userStatus, dispatch] = useContext(UserContext);
-
-  let x = () => {
-    target.style.display = "block";
-  };
-
+  const [userStatus] = useContext(UserContext);
   return (
     <div className="button-sm">
       <a
@@ -27,7 +22,7 @@ function ButtonSm({ id }) {
           {userStatus.isAdmin === true ? "Edit" : "More details"}
         </button>
       </a>
-      <button className="add-to-cart-sm" onClick={() => x()}>
+      <button className="add-to-cart-sm" onClick={() => AddToCart(id)}>
         {userStatus.isAdmin === true ? "Disable" : "Add to cart"}
       </button>
     </div>

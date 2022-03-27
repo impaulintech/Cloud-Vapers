@@ -7,10 +7,10 @@ import { UserContext } from "../utils/UserContext";
 import AdminPanel from "../admin/AdminDashboard";
 
 const Home = () => {
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [userStatus] = useContext(UserContext);
   return (
     <Fragment>
-      {user.isAdmin === null ? (
+      {userStatus.isAdmin === null ? (
         <>
           <HeroBanner />
           <FeaturedProduct />

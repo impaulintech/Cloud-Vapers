@@ -9,30 +9,30 @@ import { useParams } from "react-router-dom";
 import dummy from "../assets/images/dummy.png";
 
 const SpecificProduct = () => {
-  const [userStatus, dispatch, productList, setProduct] =
-    useContext(UserContext);
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
   const { productId } = useParams();
-
+  let g = Math.floor(Math.random() * (localProduct.product.length - 4));
   const matchProduct = () => {
-    if (productList.length === 0) {
+    if (localProduct.product.length === 0) {
       null;
     } else {
-      for (let i = 0; i < productList.product.length; i++) {
-        if (productList.product[i]._id === productId) {
+      for (let i = 0; i < localProduct.product.length; i++) {
+        if (localProduct.product[i]._id === productId) {
           return (
             <>
               <ProductBanner
-                name={productList.product[i].name}
-                price={productList.product[i].price}
-                description={productList.product[i].description}
-                image={productList.product[i].image}
+                name={localProduct.product[i].name}
+                price={localProduct.product[i].price}
+                description={localProduct.product[i].description}
+                image={localProduct.product[i].image}
+                id={localProduct.product[i]._id}
               />
               <div className="spcp">
                 <h1 className="subh1">Similar Product</h1>
                 <div className="similar">
-                  {productList.length === 0
+                  {localProduct.product.length === 0
                     ? null
-                    : productList.product
+                    : localProduct.product
                         .slice(g, g + 3)
                         .map((x) => (
                           <ProductCard
@@ -54,13 +54,11 @@ const SpecificProduct = () => {
     }
   };
 
-  let g = Math.floor(Math.random() * 5);
-
   return (
     <>
       {userStatus.isAdmin === null ? (
         <React.Fragment>
-          {productList.length === 0 ? (
+          {localProduct.product.length === 0 ? (
             <>
               <ProductBanner
                 name={"Lorem ipsum dolor sit amet..."}

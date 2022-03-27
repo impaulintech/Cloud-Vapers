@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../utils/UserContext";
 
 function DummyLogin() {
-  const [userStatus, dispatch] = useContext(UserContext);
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
   return (
     <div
       style={{

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../utils/UserContext";
 
 const Login = () => {
-  const [userStatus, dispatch] = useContext(UserContext);
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
   return (
     <>
       {userStatus.isAdmin === null && userStatus.id === null ? (

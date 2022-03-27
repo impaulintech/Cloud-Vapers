@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/Nav";
@@ -7,7 +8,7 @@ import Products from "./user/Products";
 import Login from "./user/Login";
 import Register from "./user/Register";
 import SpecificProduct from "./user/SpecificProduct";
-import Cart from "./user/Cart";
+import Cart from "./components/Cart";
 import AdminPanel from "./admin/AdminDashboard";
 import AddProduct from "./admin/AddProduct";
 import EditProduct from "./admin/EditProduct";

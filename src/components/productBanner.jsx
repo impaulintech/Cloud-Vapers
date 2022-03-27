@@ -1,19 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../utils/UserContext";
-import { CheckUser } from "../utils/CheckUser";
+import { AddToCart } from "../utils/AddToCart";
+const ProductBanner = ({ name, price, description, image, id, state }) => {
+  const [userStatus, dispatch, localProduct] = useContext(UserContext); 
 
-const ProductBanner = ({ name, price, description, image, state }) => {
-  const [userStatus, dispatch, productList, setProduct] =
-    useContext(UserContext);
-  const target = document.querySelector(".popup-container");
-  let y = CheckUser();
-  let x = (condition) => {
-    if (condition === false) {
-      target.style.display = "block";
-    } else {
-      target.style.display = "block";
-    }
-  };
   return (
     <>
       <div className="banner">
@@ -69,7 +59,8 @@ const ProductBanner = ({ name, price, description, image, state }) => {
           <div className="button-sm">
             <button
               className="add-to-cart-sm specific-btn-sm"
-              onClick={() => x(y)}
+              onClick={() => AddToCart(id)}
+              disabled={userStatus.isAdmin === null ? "" : "disable"}
             >
               Add to cart
             </button>

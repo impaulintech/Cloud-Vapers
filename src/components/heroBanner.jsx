@@ -5,12 +5,15 @@ import ButtonLg from "./ButtonLg";
 import dummy from "../assets/images/dummy.png";
 
 const HeroBanner = () => {
-  const [userStatus, dispatch, productList, setProduct] =
-    useContext(UserContext);
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
   let x = [];
-  productList.product === undefined
+  localProduct === undefined
     ? null
-    : (x = productList.product[Math.floor(Math.random() * 8)]);
+    : (x =
+        localProduct.product[
+          Math.floor(Math.random() * localProduct.product.length)
+        ]);
+
   const { name, price, image, _id: id } = x;
 
   return (

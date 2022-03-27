@@ -18,8 +18,7 @@ const NavBar = () => {
     toggle.classList.add("toggle");
   };
 
-  const [userStatus, dispatch, productList, setProduct] =
-    useContext(UserContext);
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
   let classX = CheckUser() === false ? "popup" : "cart";
   return (
     <React.Fragment>

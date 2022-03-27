@@ -4,7 +4,7 @@ import { UserContext } from "../utils/UserContext";
 import { CheckUser, CheckAdmin } from "../utils/CheckUser";
 
 const PopUp = () => {
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   let condition = user.isAdmin === null ? CheckUser() : CheckAdmin();
   const alert =
     condition === false

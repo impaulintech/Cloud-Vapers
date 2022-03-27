@@ -7,23 +7,22 @@ import Footer from "../components/Footer";
 import AddProductButton from "../components/AddProduct";
 
 const EditProduct = () => {
-  const [userStatus, dispatch, productList, setProduct] =
-    useContext(UserContext);
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
   const { productId } = useParams();
   const matchProduct = () => {
-    if (productList.length === 0) {
+    if (localProduct.product.length === 0) {
       null;
     } else {
-      for (let i = 0; i < productList.product.length; i++) {
-        if (productList.product[i]._id === productId) {
+      for (let i = 0; i < localProduct.product.length; i++) {
+        if (localProduct.product[i]._id === productId) {
           return (
             <>
               <Form
                 title="Update Product Details"
-                name={productList.product[i].name}
-                price={productList.product[i].price}
-                description={productList.product[i].description}
-                image={productList.product[i].image}
+                name={localProduct.product[i].name}
+                price={localProduct.product[i].price}
+                description={localProduct.product[i].description}
+                image={localProduct.product[i].image}
               />
             </>
           );

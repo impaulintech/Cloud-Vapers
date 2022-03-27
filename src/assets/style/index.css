@@ -137,6 +137,22 @@ nav {
   color: var(--font-color-primary);
 }
 
+.loading-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loading-page > img {
+  width: 50%;
+}
+
 .spotlight {
   border: 3px solid var(--color-tertiary);
   width: 150px;

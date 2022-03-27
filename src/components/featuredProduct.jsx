@@ -4,11 +4,12 @@ import { UserContext } from "../utils/UserContext";
 import dummy from "../assets/images/dummy.png";
 
 const FeaturedProduct = () => {
-  const [user, setUser, productList, setProduct] = useContext(UserContext);
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
+
   let g = Math.floor(Math.random() * 5);
   return (
     <div className="featured-products">
-      {productList.length === 0
+      {localProduct.product.length === 0
         ? [0, 0, 0].map(() => (
             <ProductCard
               key={Math.random()}
@@ -20,7 +21,7 @@ const FeaturedProduct = () => {
               image={dummy}
             />
           ))
-        : productList.product
+        : localProduct.product
             .slice(g, g + 3)
             .map((x) => (
               <ProductCard

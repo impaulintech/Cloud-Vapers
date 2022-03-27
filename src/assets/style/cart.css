@@ -145,11 +145,10 @@
 }
 
 .left-plate {
-  background-image: url("../images/v2.png");
-  background-position: 0%;
-  background-size: cover;
+  background-position: center;
+  background-size: 90%;
   background-repeat: no-repeat;
-  height: 10vh;
+  height: 126px;
   margin: auto 0px;
 }
 

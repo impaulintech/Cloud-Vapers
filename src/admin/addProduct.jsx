@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import Form from "../components/Form";
-import ProductBanner from "../components/ProductBanner";
+import dummy from "../assets/images/dummy.png";
+import { UserContext } from "../utils/UserContext";
 
 const AddProduct = () => {
+  const [userStatus, dispatch, localProduct] = useContext(UserContext);
   return (
-    <React.Fragment>
-      <Form title="Add Product" />
-      <ProductBanner />
-    </React.Fragment>
+    <>
+      {userStatus.isAdmin === true ? (
+        <React.Fragment>
+          <Form
+            title="Add Product"
+            name={"Product Name..."}
+            price={"666"}
+            description={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            }
+            image={dummy}
+          />
+        </React.Fragment>
+      ) : (
+        (window.location = "/")
+      )}
+    </>
   );
 };
 
