@@ -103,6 +103,14 @@ const Cart = () => {
                                   "onchange"
                                 );
                               }
+                              setTimeout(() => {
+                                AddToCart(
+                                  item._id,
+                                  e.target.value,
+                                  "change",
+                                  "onchange"
+                                );
+                              }, 3000);
                             }}
                           />
                           <button
