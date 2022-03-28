@@ -14,6 +14,9 @@ const PopUp = () => {
 
   return (
     <React.Fragment>
+      <div className="popup-order-complete">
+        <h1>Product added to cart</h1>
+      </div>
       <div className="popup-container">
         <div
           className="popup-overlay"

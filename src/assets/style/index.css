@@ -172,6 +172,20 @@ nav {
 .cart * {
   cursor: pointer;
 }
+.popup-order-complete {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background-color: var(--color-tertiary);
+  padding: 12px 27px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  font-size: 9px;
+}
+.color-disable {
+  color: var(--font-color-disabled);
+}
 
 .left-content {
   padding: 0 50px;

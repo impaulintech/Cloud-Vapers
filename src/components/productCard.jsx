@@ -21,9 +21,9 @@ const ProductCard = ({ name, price, description, image, id }) => {
       <div className="title">{name}</div>
       <div className="description">{description.slice(0, 100) + "..."}</div>
       <div className="price">
-        <span className="current">PHP {price}.oo</span>
+        <span className="current">PHP {price.toLocaleString("en-US")}.oo</span>
         <span className="previous">
-          <del>PHP {price * 2}.oo</del>
+          <del>PHP {(price * 2).toLocaleString("en-US")}.oo</del>
         </span>
       </div>
       <ButtonSm id={id} />

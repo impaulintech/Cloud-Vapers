@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../utils/UserContext";
-import { AddToCart } from "../utils/AddToCart";
+
 const ProductBanner = ({ name, price, description, image, id, state }) => {
-  const [userStatus, dispatch, localProduct] = useContext(UserContext); 
+  const [userStatus, dispatch, localProduct, AddToCart, cart] =
+    useContext(UserContext);
 
   return (
     <>
@@ -58,8 +59,19 @@ const ProductBanner = ({ name, price, description, image, id, state }) => {
           </div>
           <div className="button-sm">
             <button
+              onMouseLeave={() => {
+                setTimeout(() => {
+                  document.querySelector(
+                    ".popup-order-complete"
+                  ).style.display = "none";
+                }, 3000);
+              }}
               className="add-to-cart-sm specific-btn-sm"
-              onClick={() => AddToCart(id)}
+              onClick={() => {
+                userStatus.id === true
+                  ? AddToCart(id, 1, "cart", null)
+                  : AddToCart(id, 1, "visitor", null);
+              }}
               disabled={userStatus.isAdmin === null ? "" : "disable"}
             >
               Add to cart

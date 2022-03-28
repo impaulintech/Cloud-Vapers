@@ -14,9 +14,7 @@ export const UserProvider = (props) => {
   const localProduct = JSON.parse(localStorage.getItem("product"));
   const localCart = JSON.parse(localStorage.getItem("cart"));
   const checkUser = localStorage.getItem("user");
-
   const [cart, setCart] = useState([]);
-
   checkUser
     ? null
     : localStorage.setItem(
@@ -26,7 +24,6 @@ export const UserProvider = (props) => {
           isAdmin: null,
         })
       );
-
   const reducer = (state, action) => {
     switch (action.type) {
       case "userLogin":
@@ -85,6 +82,14 @@ export const UserProvider = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    setInterval(() => {
+      let x = Math.floor(Math.random() * localProduct.product.length - 1);
+      // console.log(x, x === -1 ? 0 : x);
+      localStorage.setItem("random", x < 0 ? x * x : x >= 6 ? 3 : x);
+    }, 30000);
+  }, []);
+
   const checkData = () => {
     setTimeout(() => {
       window.location.reload();
@@ -93,7 +98,6 @@ export const UserProvider = (props) => {
 
   const filter = (id, value, type, action) => {
     const getCart = JSON.parse(localStorage.getItem("cart"));
-
     let idArray = getCart.map((x) => {
       return x.id;
     });
@@ -102,31 +106,32 @@ export const UserProvider = (props) => {
 
     if (check) {
       switch (action) {
+        case "remove":
+          getCart.splice(idIndex, 1);
+          setCart(getCart);
+          return localStorage.setItem("cart", JSON.stringify(getCart));
         case "decrement":
-          getCart[idIndex].qty -= value;
+          getCart[idIndex].qty -= Number(value);
           if (getCart[idIndex].qty <= 0) {
-            alert("cannot be equal or lower to 0");
-            getCart[idIndex].qty = 1;
-            setCart(getCart);
-            return localStorage.setItem("cart", JSON.stringify(getCart));
+            getCart.splice(idIndex, 1);
+            localStorage.setItem("cart", JSON.stringify(getCart));
+            return setCart(getCart);
           }
           setCart(getCart);
           return localStorage.setItem("cart", JSON.stringify(getCart));
         case "increment":
-          getCart[idIndex].qty += value;
+          getCart[idIndex].qty += Number(value);
           setCart(getCart);
           return localStorage.setItem("cart", JSON.stringify(getCart));
         case "onchange":
           getCart[idIndex].qty = Number(value);
           if (getCart[idIndex].qty <= 0) {
-            alert("cannot be equal or lower to 0");
-            getCart[idIndex].qty = 1;
-            setCart(getCart);
-            return localStorage.setItem("cart", JSON.stringify(getCart));
+            getCart.splice(idIndex, 1);
+            localStorage.setItem("cart", JSON.stringify(getCart));
+            return setCart(getCart);
           }
           setCart(getCart);
           return localStorage.setItem("cart", JSON.stringify(getCart));
-
         default:
           getCart[idIndex].qty += value;
           setCart(getCart);
@@ -140,15 +145,34 @@ export const UserProvider = (props) => {
   };
 
   const AddToCart = (id, value, type, action) => {
-    value = value || 1;
     const getCart = JSON.parse(localStorage.getItem("cart"));
     const user = JSON.parse(localStorage.getItem("user"));
+    switch (type) {
+      case "cart":
+        if (getCart === null || getCart.length === 0) {
+          setCart([{ id, qty: 1 }]);
+          return localStorage.setItem("cart", JSON.stringify([{ id, qty: 1 }]));
+        } else {
+          if (action === "increment" || action === "decrement") {
+            return filter(id, value, type, action);
+          } else {
+            document.querySelector(".popup-order-complete").style.display =
+              "block";
+            return filter(id, value, type, action);
+          }
+        }
+      case "change":
+        return filter(id, value, type, action);
+      case "remove":
+        return filter(id, value, type, action);
+      case "visitor":
+        return (document.querySelector(".popup-container").style.display =
+          "block");
+    }
 
     if (user.id === null) {
       return (document.querySelector(".popup-container").style.display =
         "block");
-    } else if (type === "cart" || type === "change") {
-      return filter(id, value, type, action);
     } else {
       document.querySelector(".popup-container").style.display = "block";
       if (getCart === null) {

@@ -6,7 +6,7 @@ import dummy from "../assets/images/dummy.png";
 const FeaturedProduct = () => {
   const [userStatus, dispatch, localProduct] = useContext(UserContext);
 
-  let g = Math.floor(Math.random() * 5);
+  let random = Number(localStorage.getItem("random"));
   return (
     <div className="featured-products">
       {localProduct.product.length === 0
@@ -22,7 +22,7 @@ const FeaturedProduct = () => {
             />
           ))
         : localProduct.product
-            .slice(g, g + 3)
+            .slice(random, random + 3)
             .map((x) => (
               <ProductCard
                 key={Math.random()}

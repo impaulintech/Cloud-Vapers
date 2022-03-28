@@ -6,13 +6,9 @@ import dummy from "../assets/images/dummy.png";
 
 const HeroBanner = () => {
   const [userStatus, dispatch, localProduct] = useContext(UserContext);
+  let random = Number(localStorage.getItem("random"));
   let x = [];
-  localProduct === undefined
-    ? null
-    : (x =
-        localProduct.product[
-          Math.floor(Math.random() * localProduct.product.length)
-        ]);
+  localProduct === undefined ? null : (x = localProduct.product[random]);
 
   const { name, price, image, _id: id } = x;
 
@@ -23,10 +19,16 @@ const HeroBanner = () => {
         <h2>Kit w/ Zeus Tank</h2>
         <div className="price">
           <span className="current">
-            PHP {price === undefined ? "000" : price}.oo
+            PHP {price === undefined ? "000" : price.toLocaleString("en-US")}.oo
           </span>
           <span className="previous">
-            <del>PHP {price === undefined ? "000" : price * 2}.oo</del>
+            <del>
+              PHP{" "}
+              {price === undefined
+                ? "000"
+                : (price * 2).toLocaleString("en-US")}
+              .oo
+            </del>
           </span>
         </div>
         <ButtonLg id={id} />

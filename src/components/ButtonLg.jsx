@@ -14,8 +14,16 @@ function ButtonLg({ id }) {
         </Link>
 
         <button
-          onClick={() => {
-            AddToCart(id);
+          onMouseLeave={() => {
+            setTimeout(() => {
+              document.querySelector(".popup-order-complete").style.display =
+                "none";
+            }, 3000);
+          }}
+          onClick={(e) => {
+            userStatus.id === null
+              ? AddToCart(id, 1, "visitor", null)
+              : AddToCart(id, 1, "cart", null);
           }}
           className="add-to-cart"
         >

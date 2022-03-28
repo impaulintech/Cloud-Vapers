@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../utils/UserContext";
-import { AddToCart } from "./../utils/AddToCart";
 
 function ButtonSm({ id }) {
-  const [userStatus] = useContext(UserContext);
+  const [userStatus, dispatch, localProduct, AddToCart, cart] =
+    useContext(UserContext);
   return (
     <div className="button-sm">
       <a
@@ -22,7 +22,20 @@ function ButtonSm({ id }) {
           {userStatus.isAdmin === true ? "Edit" : "More details"}
         </button>
       </a>
-      <button className="add-to-cart-sm" onClick={() => AddToCart(id)}>
+      <button
+        className="add-to-cart-sm"
+        onMouseLeave={() => {
+          setTimeout(() => {
+            document.querySelector(".popup-order-complete").style.display =
+              "none";
+          }, 3000);
+        }}
+        onClick={() => {
+          userStatus.id === true
+            ? AddToCart(id, 1, "cart", null)
+            : AddToCart(id, 1, "visitor", null);
+        }}
+      >
         {userStatus.isAdmin === true ? "Disable" : "Add to cart"}
       </button>
     </div>
