@@ -3,7 +3,7 @@ import "../assets/style/cart.css";
 import { UserContext } from "../utils/UserContext";
 
 const Cart = () => {
-  const [userStatus, dispatch, localProduct, AddToCart, cart, setCart] =
+  const [userStatus, dispatch, localProduct, AddToCart, cart] =
     useContext(UserContext);
   let totalPrice = 0;
   let cartData = [];
